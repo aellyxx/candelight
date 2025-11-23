@@ -44,37 +44,28 @@ export function ArtOfCandleMaking() {
         <div className="space-y-16">
           {discussionTopics.map((topic, index) => (
             <div key={topic.id} className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-              {/* Alternate image position for visual rhythm */}
-              {index % 2 === 0 ? (
-                <>
-                  <div className="flex-1 rounded-xl overflow-hidden shadow-lg h-80">
-                    <img
-                      src={topic.image || "/placeholder.svg"}
-                      alt={topic.title}
-                      className="w-full h-full object-cover hover:scale-105 transition duration-500"
-                    />
-                  </div>
-                  <div className="flex-1 space-y-4">
-                    <h3 className="font-serif text-3xl font-bold text-orange-500">{topic.title}</h3>
-                    <p className="text-muted-foreground text-base leading-relaxed">{topic.description}</p>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="flex-1 space-y-4">
-                    <h3 className="font-serif text-3xl font-bold text-orange-500">{topic.title}</h3>
-                    <p className="text-muted-foreground text-base leading-relaxed">{topic.description}</p>
-                  </div>
-                  <div className="flex-1 rounded-xl overflow-hidden shadow-lg h-80">
-                    <img
-                      src={topic.image || "/placeholder.svg"}
-                      alt={topic.title}
-                      className="w-full h-full object-cover hover:scale-105 transition duration-500"
-                    />
-                  </div>
-                </>
-              )}
-            </div>
+          <div
+            className={`flex-1 rounded-xl overflow-hidden shadow-lg h-80 ${
+              index % 2 !== 0 ? "lg:order-2" : ""
+            }`}
+          >
+            <img
+              src={topic.image || "/placeholder.svg"}
+              alt={topic.title}
+              className="w-full h-full object-cover hover:scale-105 transition duration-500"
+            />
+          </div>
+
+          <div
+            className={`flex-1 space-y-4 ${
+              index % 2 !== 0 ? "lg:order-1" : ""
+            }`}
+          >
+            <h3 className="font-serif text-3xl font-bold text-orange-500">{topic.title}</h3>
+            <p className="text-muted-foreground text-base leading-relaxed">{topic.description}</p>
+          </div>
+        </div>
+
           ))}
         </div>
       </div>
